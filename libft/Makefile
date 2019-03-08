@@ -6,7 +6,7 @@
 #    By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/09 12:43:35 by midrissi          #+#    #+#              #
-#    Updated: 2019/03/08 08:50:13 by midrissi         ###   ########.fr        #
+#    Updated: 2019/03/08 09:07:24 by midrissi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,7 +73,7 @@ $(NAME): $(OBJ)
 	@$(AR) $(NAME) $(OBJ)
 	@echo "$(_BOLD)$(_GREEN)Compilation de la libft terminée => ${NAME}$(_END)"
 
-obj/%.o: srcs/%.c
+$(OBJ): obj/%.o: srcs/%.c
 	@if ! test -d $(OBJPATH); then \
 	mkdir -p $(OBJPATH); fi
 	@$(COMP) $(CFLAGS) -o $@ $<
