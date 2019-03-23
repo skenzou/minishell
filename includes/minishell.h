@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/08 09:15:55 by midrissi          #+#    #+#             */
-/*   Updated: 2019/03/22 22:46:17 by midrissi         ###   ########.fr       */
+/*   Created: 2019/03/22 21:38:26 by midrissi          #+#    #+#             */
+/*   Updated: 2019/03/22 21:43:57 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#ifndef MINISHELL_H
+# define MINISHELL_H
 
-int main(int argc, char **argv)
-{
-  pid_t father;
-  int a;
+# include "../libft/includes/libft.h"
+# include <stdio.h>
+# include <fcntl.h>
+# include <pthread.h>
+# include <sys/wait.h>
 
-  (void)argc;
-    father = fork();
-    if (father > 0)
-      wait(&a);
-
-    if (father == 0)
-        execve("/bin/ls", argv, NULL);
-}
+#endif
