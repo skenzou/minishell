@@ -6,7 +6,7 @@
 #    By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/09 12:43:35 by midrissi          #+#    #+#              #
-#    Updated: 2019/03/08 09:07:24 by midrissi         ###   ########.fr        #
+#    Updated: 2019/03/22 19:37:48 by midrissi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ ft_strrchr.c ft_tolower.c get_next_line.c ft_itoa_base.c \
 ft_nputchar.c ft_ftoa.c ft_utoa_base.c ft_count_char.c \
 ft_lstpushback.c ft_lstrev.c ft_lstdestroy.c \
 ft_count_words.c ft_printf.c numbers.c format_geters.c \
-handlers.c ft_abs.c ft_get_color.c ft_percent.c
+handlers.c ft_abs.c ft_get_color.c ft_percent.c ft_interpolate.c
 
 _END			=	\x1b[0m
 _BOLD			=	\x1b[1m
@@ -51,7 +51,7 @@ _IBLUE			=	\x1b[44m
 _IPURPLE		=	\x1b[45m
 _ICYAN			=	\x1b[46m
 _IWHITE			=	\x1b[47m
-MSG					= Compilation de la libft:
+MSG					= Compiling the libft:
 
 OBJPATH			= obj/
 SRCPATH			=	srcs/
@@ -69,28 +69,28 @@ LONGEST			=	$(shell echo $(notdir $(SRCS)) | tr " " "\n" | awk ' { if (\
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@echo "$(_BOLD)$(_YELLOW)Creation de la libft ...$(_END)"
+	@echo "$(_BOLD)$(_PURPLE)Making ${NAME}...$(_END)"
 	@$(AR) $(NAME) $(OBJ)
-	@echo "$(_BOLD)$(_GREEN)Compilation de la libft terminée => ${NAME}$(_END)"
+	@echo "$(_BOLD)$(_GREEN)${NAME} is ready for use$(_END)"
 
 $(OBJ): obj/%.o: srcs/%.c
 	@if ! test -d $(OBJPATH); then \
 	mkdir -p $(OBJPATH); fi
 	@$(COMP) $(CFLAGS) -o $@ $<
-	@printf "$(_BOLD)$(_PURPLE)$(MSG)$(_END) $(_CYAN)%-$(LONGEST)s\
+	@printf "$(_BOLD)$(_BLUE)$(MSG)$(_END) $(_BOLD)$(_CYAN)%-$(LONGEST)s\
 	$(_END)" $(notdir $<)
 	@if test -s obj/$*.o; then \
-	printf "$(_GREEN)[OK]\n$(_END)";\
+	printf "$(_GREEN)[SUCCESS]\n$(_END)";\
 	else \
 	printf "$(_RED)[ERROR]\n$(_END)"; fi
 
 clean:
 	@rm -rf $(OBJPATH)
-	@echo "$(_BOLD)$(_RED)Suppression des objets terminée$(_END)"
+	@echo "$(_BOLD)$(_RED)Sucessfuly removed all objects from the libft$(_END)"
 
 fclean: clean
 	@rm -f $(NAME)
-	@echo "$(_BOLD)$(_RED)Suppression de {${NAME}} terminée$(_END)"
+	@echo "$(_BOLD)$(_RED)Sucessfuly removed ${NAME} from the libft$(_END)"
 
 re: fclean all
 
