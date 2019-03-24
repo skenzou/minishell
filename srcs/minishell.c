@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/08 09:15:55 by midrissi          #+#    #+#             */
-/*   Updated: 2019/03/24 22:50:22 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/03/25 00:06:18 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,26 +87,28 @@ int		find_bin(char **bin, char **env, char **paths)
 					signal(SIGINT, sigfork);
 					if (!pid)
 						execve(path, bin, env);
+					else if (pid < 0)
+						return (FAILFORK);
 					wait(&pid);
-					return (1);
+					return (0);
 				}
 	}
-	return (0);
+	return (NOT_FOUND);
 }
 
 int		exec_envpath(char **bin, char **env)
 {
 	char *paths;
 	char **split_paths;
+	int err;
 
 	if ((paths = get_env_path(env)) == NULL || paths[0] == '\0')
 		split_paths = NULL;
 	else
 		split_paths = ft_strsplit(paths, ':');
-	if (find_bin(bin, env, split_paths) == 0)
-		ft_printf("-minishell: %s: command not found\n", bin[0]);
+	err = find_bin(bin, env, split_paths);
 	ft_splitdel(split_paths);
-	return (0);
+	return (err);
 }
 
 int	exec_binpath(char **bin, char **env)

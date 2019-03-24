@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 21:38:26 by midrissi          #+#    #+#             */
-/*   Updated: 2019/03/24 20:33:14 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/03/25 00:06:14 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@
 # define UNSETENV     12
 # define ENV          13
 # define EXIT         14
+# define NOT_FOUND    15
 
 int   cd_builtin(int argc, char **argv, char **env);
 void   err_handler(int err_id, char *str);

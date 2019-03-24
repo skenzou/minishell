@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/24 13:32:59 by midrissi          #+#    #+#             */
-/*   Updated: 2019/03/24 20:38:00 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/03/25 00:06:16 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,6 @@ void	err_handler(int err_id, char *str)
 		ft_printf("-minishell: Fork failed\n", str);
 	if (err_id == NOT_DIR)
 		ft_printf("-minishell: not a directory: %s\n", str);
+	if (err_id == NOT_FOUND)
+		ft_printf("-minishell: %s: command not found\n", str);
 }
