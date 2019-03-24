@@ -6,7 +6,7 @@
 #    By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/03 09:24:41 by midrissi          #+#    #+#              #
-#    Updated: 2019/03/23 17:43:44 by midrissi         ###   ########.fr        #
+#    Updated: 2019/03/24 20:39:10 by midrissi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,8 @@ MSG				=	Compiling minishell
 NAME = minishell
 cc = gcc
 C_FLAGS = -Wall -Wextra -Werror
-SRC_NAME = minishell.c
+SRC_NAME = minishell.c cd_builtin.c err_handler.c echo_builtin.c cd_builtin.c \
+						signal_handlers.c exit_builtin.c
 OBJ_PATH = ./obj/
 LFT_PATH = ./libft/
 INC_PATH = ./includes
