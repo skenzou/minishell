@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/24 11:44:34 by midrissi          #+#    #+#             */
-/*   Updated: 2019/03/24 20:38:02 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/03/24 22:50:06 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int   cd_builtin(int argc, char **argv, char **env)
 
   path = NULL;
   err = 0;
-  if (argc == 1 && !(path = get_homepath(env)))
+  if (argc == 1 && (path = get_homepath(env)))
       err = change_dir(path, env);
   else if (argc > 1)
     err = change_dir(argv[1], env);

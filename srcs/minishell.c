@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/08 09:15:55 by midrissi          #+#    #+#             */
-/*   Updated: 2019/03/24 20:37:54 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/03/24 22:50:22 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,6 +187,8 @@ int 		cmd_handler(char *cmd, char **env)
 	int id;
 
 	args = ft_strsplit(cmd, ' ');
+	if (!ft_split_count(args))
+		return (0);
 	if (!args)
 		return (-1);
 	id = get_builtin(args[0]);
@@ -263,39 +265,3 @@ int main(int argc, char **argv, char **env)
 	ft_splitdel(env);
 	return (0);
 }
-
-// int		main(int argc, char **argv, char **env)
-// {
-// 	pid_t	father;
-// 	 int		a;
-// 	char	*input;
-// 	int		ret;
-// 	char	**args;
-//
-// 	ret = 1;
-// 	print_curr_dir();
-// 	while (ret == 1)
-// 	{
-// 		if ((ret = get_next_line(0, &input)) > 0)
-// 		{
-// 			father = fork();
-// 			if (father > 0)
-// 			{
-// 				wait(&a);
-// 				print_curr_dir();
-// 			}
-// 			if (father == 0)
-// 			{
-// 				args = ft_strsplit(input, ' ');
-// 				if (is_path(args[0]))
-// 					execve(args[0], args, env);
-// 				else
-// 				{
-// 						get_bin(args[0], env, args);
-// 				}
-// 			}
-// 		}
-// 	}
-// 	(void)argc;
-// 	(void)argv;
-// }
