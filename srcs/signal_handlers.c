@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/24 19:59:51 by midrissi          #+#    #+#             */
-/*   Updated: 2019/03/24 20:37:55 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/03/26 16:33:25 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,5 @@ void	sigfork(int sig)
 	{
 		ft_printf("\n");
 		signal(SIGINT, sigfork);
-  }
+	}
 }

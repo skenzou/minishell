@@ -6,13 +6,13 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/08 09:15:55 by midrissi          #+#    #+#             */
-/*   Updated: 2019/03/25 00:06:18 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/03/26 16:33:27 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void 		print_env(char **env)
+void	print_env(char **env)
 {
 	int i;
 
@@ -71,36 +71,36 @@ void		set_path(char fullpath[], char *cmd, char *path)
 
 int		find_bin(char **bin, char **env, char **paths)
 {
-	char path[MAX_PATH_LEN];
-	struct stat buff;
+	char		path[MAX_PATH_LEN];
+	struct stat	buff;
 	pid_t		pid;
-	int i;
+	int			i;
 
 	i = -1;
 	while (paths && paths[++i])
 	{
-			set_path(path, bin[0], paths[i]);
-			if (!lstat(path, &buff))
-				if (!access(path, X_OK))
-				{
-					pid = fork();
-					signal(SIGINT, sigfork);
-					if (!pid)
-						execve(path, bin, env);
-					else if (pid < 0)
-						return (FAILFORK);
-					wait(&pid);
-					return (0);
-				}
+		set_path(path, bin[0], paths[i]);
+		if (!lstat(path, &buff))
+			if (!access(path, X_OK))
+			{
+				pid = fork();
+				signal(SIGINT, sigfork);
+				if (!pid)
+					execve(path, bin, env);
+				else if (pid < 0)
+					return (FAILFORK);
+				wait(&pid);
+				return (0);
+			}
 	}
 	return (NOT_FOUND);
 }
 
 int		exec_envpath(char **bin, char **env)
 {
-	char *paths;
-	char **split_paths;
-	int err;
+	char	*paths;
+	char	**split_paths;
+	int		err;
 
 	if ((paths = get_env_path(env)) == NULL || paths[0] == '\0')
 		split_paths = NULL;
@@ -111,10 +111,10 @@ int		exec_envpath(char **bin, char **env)
 	return (err);
 }
 
-int	exec_binpath(char **bin, char **env)
+int		exec_binpath(char **bin, char **env)
 {
 	struct stat	buff;
-	pid_t				pid;
+	pid_t		pid;
 
 	if (lstat(bin[0], &buff) == -1)
 		return (NON_EXISTENT);
@@ -135,7 +135,7 @@ int	exec_binpath(char **bin, char **env)
 	return (0);
 }
 
-void 	exec_bin(char **bin, char **env)
+void	exec_bin(char **bin, char **env)
 {
 	int err;
 
@@ -161,7 +161,7 @@ int		get_builtin(char *cmd)
 		return (ENV);
 	else if (ft_strequ(cmd, "exit") == 1)
 		return (EXIT);
-return (0);
+	return (0);
 }
 
 void	exec_builtin(char **builtin, int id, char **env)
@@ -183,10 +183,10 @@ void	exec_builtin(char **builtin, int id, char **env)
 		err_handler(err_id, builtin[0]);
 }
 
-int 		cmd_handler(char *cmd, char **env)
+int		cmd_handler(char *cmd, char **env)
 {
-	char **args;
-	int id;
+	char	**args;
+	int		id;
 
 	args = ft_strsplit(cmd, ' ');
 	if (!ft_split_count(args))
@@ -202,37 +202,37 @@ int 		cmd_handler(char *cmd, char **env)
 	return (0);
 }
 
-void 		input_handler(char *input,char **env)
+void		input_handler(char *input, char **env)
 {
-	int i;
-	int ret;
-	char **cmds;
+	int		i;
+	int		ret;
+	char	**cmds;
 
 	cmds = ft_strsplit(input, ';');
 	ft_strdel(&input);
 	if (!cmds)
 	{
-			ft_splitdel(env);
-			exit(0);
+		ft_splitdel(env);
+		exit(0);
 	}
 	i = -1;
 	while (cmds[++i])
 	{
-			ret = cmd_handler(cmds[i], env);
-			if (ret == -1)
-			{
-				ft_splitdel(cmds);
-				ft_splitdel(env);
-				exit(0);
-			}
+		ret = cmd_handler(cmds[i], env);
+		if (ret == -1)
+		{
+			ft_splitdel(cmds);
+			ft_splitdel(env);
+			exit(0);
+		}
 	}
 	ft_splitdel(cmds);
 }
 
-char **dup_env(char **env)
+char	**dup_env(char **env)
 {
-	char **p;
-	int i;
+	char	**p;
+	int		i;
 
 	i = ft_split_count(env);
 	if (!(p = (char **)ft_memalloc(sizeof(char *) * (i + 1))))
@@ -245,10 +245,10 @@ char **dup_env(char **env)
 	return (p);
 }
 
-int main(int argc, char **argv, char **env)
+int		main(int argc, char **argv, char **env)
 {
-	char *input;
-	int ret;
+	char	*input;
+	int		ret;
 
 	ret = 1;
 	env = dup_env(env);
