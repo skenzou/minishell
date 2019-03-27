@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 21:23:47 by midrissi          #+#    #+#             */
-/*   Updated: 2019/03/27 21:27:24 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/03/28 00:03:37 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 static int		get_builtin(char *cmd)
 {
-	if (ft_strequ(cmd, "echo") == 1)
+	if (ft_strcmp(cmd, "echo") == 0)
 		return (ECHO);
-	else if (ft_strequ(cmd, "cd") == 1)
+	else if (ft_strcmp(cmd, "cd") == 0)
 		return (CD);
-	else if (ft_strequ(cmd, "setenv") == 1)
+	else if (ft_strcmp(cmd, "setenv") == 0)
 		return (SETENV);
-	else if (ft_strequ(cmd, "unsetenv") == 1)
+	else if (ft_strcmp(cmd, "unsetenv") == 0)
 		return (UNSETENV);
-	else if (ft_strequ(cmd, "env") == 1)
+	else if (ft_strcmp(cmd, "env") == 0)
 		return (ENV);
-	else if (ft_strequ(cmd, "exit") == 1)
+	else if (ft_strcmp(cmd, "exit") == 0)
 		return (EXIT);
 	return (0);
 }

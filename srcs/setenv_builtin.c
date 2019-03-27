@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 18:46:30 by midrissi          #+#    #+#             */
-/*   Updated: 2019/03/27 21:02:46 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/03/28 00:03:47 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,31 +47,35 @@ static char  **addkey(char *key, char *value, char **env)
   return (fresh_env);
 }
 
-int   setenv_builtin(int ac, char **av, char ***env)
+void  ft_setenv(char *key, char *value, char ***env)
 {
   int i;
   char *temp;
-  char *key;
 
-  if (ac > 3)
-    return (SETENV_USG);
-  if (ac == 1)
-  {
-      print_env(*env);
-      return (0);
-  }
-  key = ft_strjoin(av[1], "=");
+  key = ft_strjoin(key, "=");
   key == NULL ? exit(1) : 0;
   i = is_set(key, *env);
   if (i >= 0)
   {
     temp = (*env)[i];
-    (*env)[i] = ac == 2 ? key : ft_strjoin(key, av[2]);
+    (*env)[i] = !value ? key : ft_strjoin(key, value);
     (*env)[i] == NULL ? exit(1) : 0;
     ft_strdel(&temp);
   }
   else
-    *env = ac == 2 ? addkey(key, NULL, *env) : addkey(key, av[2], *env);
-  ac == 3 ? ft_strdel(&key) : 0;
+    *env = !value ? addkey(key, NULL, *env) : addkey(key, value, *env);
+  value ? ft_strdel(&key) : 0;
+}
+
+int   setenv_builtin(int ac, char **av, char ***env)
+{
+  if (ac > 3)
+    return (SETENV_USG);
+  if (ac == 1)
+    print_env(*env);
+  if (ac == 2)
+    ft_setenv(av[1], NULL, env);
+  if (ac == 3)
+    ft_setenv(av[1], av[2], env);
   return (0);
 }

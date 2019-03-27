@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 21:38:26 by midrissi          #+#    #+#             */
-/*   Updated: 2019/03/27 21:31:15 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/03/27 21:56:15 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ void    exit_builtin(void);
 /* SETENV_BUILTIN.C */
 int   setenv_builtin(int ac, char **av, char ***env);
 int   is_set(char *key, char **env);
+void  ft_setenv(char *key, char *value, char ***env);
 
 /* UNSETENV_BUILTIN.C */
 int         unsetenv_builtin(int ac, char **av, char ***env);

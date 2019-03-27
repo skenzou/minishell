@@ -6,11 +6,12 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/24 11:44:34 by midrissi          #+#    #+#             */
-/*   Updated: 2019/03/27 19:16:46 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/03/28 00:03:21 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+#include <errno.h>
 
 static char		*get_homepath(char **env)
 {
@@ -33,7 +34,7 @@ static char		*get_oldpwd(char **env)
 	while (env[++i])
 	{
 		if (!ft_strncmp(env[i], "OLDPWD=", 7))
-			return (env[i] + 7);
+			return (ft_strdup(env[i] + 7));
 	}
 	return (NULL);
 }
@@ -41,11 +42,12 @@ static char		*get_oldpwd(char **env)
 static int		change_dir(char *path, char ***env)
 {
 	struct stat buf;
-	// char cwd[MAX_PATH_LEN];
+	char cwd[MAX_PATH_LEN];
 
 	if (path && ft_strlen(path) == 1 && path[0] == '-')
 	{
 		path = get_oldpwd(*env);
+		path == NULL ? exit(1) : 0;
 		ft_printf("%s\n", path);
 	}
 	if (!lstat(path, &buf))
@@ -54,7 +56,9 @@ static int		change_dir(char *path, char ***env)
 		{
 			if (!access(path, X_OK))
 			{
+				ft_setenv("OLDPWD", getcwd(cwd, sizeof(cwd)), env);
 				chdir(path);
+				ft_setenv("PWD", getcwd(cwd, sizeof(cwd)), env);
 				return (0);
 			}
 			return (NO_RIGHT);
