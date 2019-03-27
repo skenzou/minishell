@@ -1,0 +1,71 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cmd_handler.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/03/27 21:23:47 by midrissi          #+#    #+#             */
+/*   Updated: 2019/03/27 21:27:24 by midrissi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "minishell.h"
+
+static int		get_builtin(char *cmd)
+{
+	if (ft_strequ(cmd, "echo") == 1)
+		return (ECHO);
+	else if (ft_strequ(cmd, "cd") == 1)
+		return (CD);
+	else if (ft_strequ(cmd, "setenv") == 1)
+		return (SETENV);
+	else if (ft_strequ(cmd, "unsetenv") == 1)
+		return (UNSETENV);
+	else if (ft_strequ(cmd, "env") == 1)
+		return (ENV);
+	else if (ft_strequ(cmd, "exit") == 1)
+		return (EXIT);
+	return (0);
+}
+
+static void	exec_builtin(char **builtin, int id, char ***env)
+{
+	int	ac;
+	int	err_id;
+
+	ac = ft_split_count(builtin);
+	err_id = 0;
+	if (id == ECHO)
+		err_id = echo_builtin(ac, builtin);
+	if (id == CD)
+		err_id = cd_builtin(ac, builtin, env);
+	if (id == ENV && ac == 1)
+		print_env(*env);
+	if (id == SETENV)
+		err_id = setenv_builtin(ac, builtin, env);
+	if (id == UNSETENV)
+		err_id = unsetenv_builtin(ac, builtin, env);
+	if (id == EXIT)
+		exit_builtin();
+	if (err_id != 0)
+		err_handler(err_id, builtin[0]);
+}
+
+void		cmd_handler(char *cmd, char ***env)
+{
+	char	**args;
+	int		id;
+
+	if (!(args = ft_strsplit(cmd, ' ')))
+		exit(1);
+	if (ft_split_count(args) > 0)
+	{
+		id = get_builtin(args[0]);
+		if (id > 0)
+			exec_builtin(args, id, env);
+		else
+			exec_bin(args, *env);
+	}
+	ft_splitdel(args);
+}

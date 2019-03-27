@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/24 11:44:34 by midrissi          #+#    #+#             */
-/*   Updated: 2019/03/26 16:33:33 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/03/27 19:16:46 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,14 @@ static char		*get_oldpwd(char **env)
 	return (NULL);
 }
 
-static int		change_dir(char *path, char **env)
+static int		change_dir(char *path, char ***env)
 {
 	struct stat buf;
 	// char cwd[MAX_PATH_LEN];
 
 	if (path && ft_strlen(path) == 1 && path[0] == '-')
 	{
-		path = get_oldpwd(env);
+		path = get_oldpwd(*env);
 		ft_printf("%s\n", path);
 	}
 	if (!lstat(path, &buf))
@@ -64,14 +64,14 @@ static int		change_dir(char *path, char **env)
 	return (NON_EXISTENT);
 }
 
-int				cd_builtin(int argc, char **argv, char **env)
+int				cd_builtin(int argc, char **argv, char ***env)
 {
 	char	*path;
 	int		err;
 
 	path = NULL;
 	err = 0;
-	if (argc == 1 && (path = get_homepath(env)))
+	if (argc == 1 && (path = get_homepath(*env)))
 		err = change_dir(path, env);
 	else if (argc > 1)
 		err = change_dir(argv[1], env);

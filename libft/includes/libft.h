@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/04 13:56:36 by midrissi          #+#    #+#             */
-/*   Updated: 2019/03/24 15:16:06 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/03/27 21:32:24 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,5 +144,6 @@ int				ft_get_color(int color1, int color2, double percentage);
 double			ft_percent(int start, int end, int curr);
 int					ft_split_count(char **split);
 void   		ft_splitdel(char **split);
+char		*ft_strcjoin(char const *s1, char const *s2, char c);
 
 #endif

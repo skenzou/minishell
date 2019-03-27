@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/24 13:32:59 by midrissi          #+#    #+#             */
-/*   Updated: 2019/03/25 00:06:16 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/03/27 20:26:22 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ void	err_handler(int err_id, char *str)
 	if (err_id == INV_ARG)
 		ft_printf("-minishell: %s: Invalid argument\n", str);
 	if (err_id == SETENV_USG)
-		ft_printf("usage: setenv [[Key=Value] | [Key] [Value]]\n", str);
+		ft_printf("usage: setenv [<Key> <Value> | <Key>]\n", str);
 	if (err_id == UNSETENV_USG)
-		ft_printf("usage: unsetenv [Key]\n", str);
+		ft_printf("usage: unsetenv <Key>\n", str);
 	if (err_id == FAILFORK)
 		ft_printf("-minishell: Fork failed\n", str);
 	if (err_id == NOT_DIR)

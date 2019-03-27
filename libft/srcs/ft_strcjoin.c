@@ -1,32 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   signal_handlers.c                                  :+:      :+:    :+:   */
+/*   ft_strcjoin.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/24 19:59:51 by midrissi          #+#    #+#             */
-/*   Updated: 2019/03/27 21:29:03 by midrissi         ###   ########.fr       */
+/*   Created: 2019/03/27 19:56:22 by midrissi          #+#    #+#             */
+/*   Updated: 2019/03/27 20:20:33 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-void	sighandler(int sig)
+char	*ft_strcjoin(char const *s1, char const *s2, char c)
 {
-	if (sig == SIGINT)
-	{
-		ft_printf("\n");
-		print_prompt();
-		signal(SIGINT, sighandler);
-	}
-}
+	size_t	size;
+	int		i;
+	char	*fresh;
 
-void	sigfork(int sig)
-{
-	if (sig == SIGINT)
+	if (!s1 || !s2)
+		return (NULL);
+	size = ft_strlen(s1) + ft_strlen(s2) + 2;
+	fresh = (char *)malloc(sizeof(char) * size);
+	if (!fresh)
+		return (NULL);
+	i = 0;
+	while (s1[i])
 	{
-		ft_printf("\n");
-		signal(SIGINT, sigfork);
+		fresh[i] = s1[i];
+		i++;
 	}
+  fresh[i] = c;
+	fresh[i + 1] = '\0';
+	ft_strcat(fresh, s2);
+	return (fresh);
 }

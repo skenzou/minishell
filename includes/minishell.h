@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 21:38:26 by midrissi          #+#    #+#             */
-/*   Updated: 2019/03/25 00:06:14 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/03/27 21:31:15 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,41 @@
 # define EXIT         14
 # define NOT_FOUND    15
 
-int   cd_builtin(int argc, char **argv, char **env);
+
+/* UTILS.C */
+char	*get_env_path(char **env);
+void	set_path(char fullpath[], char *cmd, char *path);
+int		is_path(char *str);
+void	print_prompt(void);
+void	print_env(char **env);
+
+/* CD_BUILTIN.C */
+int				cd_builtin(int argc, char **argv, char ***env);
+
+/* ERR_HANDLER.C */
 void   err_handler(int err_id, char *str);
+
+/* ECHO_BUILTIN.C */
 int     echo_builtin(int argc, char **argv);
+
+/* SIGNAL_HANDLERS.C */
 void   sigfork(int sig);
-void   sighandler(int sig);\
-void	print_curr_dir(void);
+void   sighandler(int sig);
+
+/* EXIT_BUILTIN.C */
 void    exit_builtin(void);
+
+/* SETENV_BUILTIN.C */
+int   setenv_builtin(int ac, char **av, char ***env);
+int   is_set(char *key, char **env);
+
+/* UNSETENV_BUILTIN.C */
+int         unsetenv_builtin(int ac, char **av, char ***env);
+
+/* BIN_HANDLER.C */
+void	exec_bin(char **bin, char **env);
+
+/* CMD_HANDLER.C */
+void		cmd_handler(char *cmd, char ***env);
 
 #endif
