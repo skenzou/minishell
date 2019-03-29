@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/24 11:44:34 by midrissi          #+#    #+#             */
-/*   Updated: 2019/03/28 00:03:21 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/03/29 18:02:03 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ static char		*get_oldpwd(char **env)
 
 static int		change_dir(char *path, char ***env)
 {
-	struct stat buf;
-	char cwd[MAX_PATH_LEN];
+	struct stat		buf;
+	char			cwd[MAX_PATH_LEN];
 
 	if (path && ft_strlen(path) == 1 && path[0] == '-')
 	{

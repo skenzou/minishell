@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/08 09:15:55 by midrissi          #+#    #+#             */
-/*   Updated: 2019/03/27 21:27:10 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/03/29 18:02:55 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void		input_handler(char *input, char ***env)
 	int		i;
 	char	**cmds;
 
-	if (! (cmds = ft_strsplit(input, ';')))
+	if (!(cmds = ft_strsplit(input, ';')))
 		exit(1);
 	ft_strdel(&input);
 	i = -1;
@@ -26,7 +26,7 @@ void		input_handler(char *input, char ***env)
 	ft_splitdel(cmds);
 }
 
-char	**dup_env(char **env)
+char		**dup_env(char **env)
 {
 	char	**p;
 	int		i;
@@ -42,7 +42,7 @@ char	**dup_env(char **env)
 	return (p);
 }
 
-int		main(int argc, char **argv, char **env)
+int			main(int argc, char **argv, char **env)
 {
 	char	*input;
 	int		ret;

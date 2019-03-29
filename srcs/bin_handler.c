@@ -6,12 +6,11 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 21:26:08 by midrissi          #+#    #+#             */
-/*   Updated: 2019/03/27 21:27:08 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/03/29 18:01:44 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
 
 static int		find_bin(char **bin, char **env, char **paths)
 {
@@ -79,7 +78,7 @@ static int		exec_binpath(char **bin, char **env)
 	return (0);
 }
 
-void	exec_bin(char **bin, char **env)
+void			exec_bin(char **bin, char **env)
 {
 	int err;
 

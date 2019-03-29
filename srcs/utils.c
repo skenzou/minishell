@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 21:12:06 by midrissi          #+#    #+#             */
-/*   Updated: 2019/03/27 21:14:21 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/03/29 18:06:07 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ char	*get_env_path(char **env)
 	return (NULL);
 }
 
-void		set_path(char fullpath[], char *cmd, char *path)
+void	set_path(char fullpath[], char *cmd, char *path)
 {
 	ft_bzero(fullpath, MAX_PATH_LEN);
 	ft_strcpy(fullpath, path);

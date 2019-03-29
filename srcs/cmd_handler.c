@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 21:23:47 by midrissi          #+#    #+#             */
-/*   Updated: 2019/03/28 00:03:37 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/03/29 18:02:18 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int		get_builtin(char *cmd)
 	return (0);
 }
 
-static void	exec_builtin(char **builtin, int id, char ***env)
+static void		exec_builtin(char **builtin, int id, char ***env)
 {
 	int	ac;
 	int	err_id;
@@ -52,7 +52,7 @@ static void	exec_builtin(char **builtin, int id, char ***env)
 		err_handler(err_id, builtin[0]);
 }
 
-void		cmd_handler(char *cmd, char ***env)
+void			cmd_handler(char *cmd, char ***env)
 {
 	char	**args;
 	int		id;

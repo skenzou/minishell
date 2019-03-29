@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/04 13:56:36 by midrissi          #+#    #+#             */
-/*   Updated: 2019/03/27 21:32:24 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/03/29 18:15:21 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ char			*ft_utoa_base(uintmax_t nb,
 				unsigned base, int uppercase);
 int				ft_count_char(char c, char *str);
 int				ft_count_words(char const *s, char c);
-double		interpolate(double start, double end, double interpolat);
+double			interpolate(double start, double end, double interpolat);
 
 typedef struct	s_list
 {
@@ -142,8 +142,8 @@ char			*get_string(t_format *fmt, va_list ap);
 intmax_t		ft_abs(intmax_t nb);
 int				ft_get_color(int color1, int color2, double percentage);
 double			ft_percent(int start, int end, int curr);
-int					ft_split_count(char **split);
-void   		ft_splitdel(char **split);
-char		*ft_strcjoin(char const *s1, char const *s2, char c);
+int				ft_split_count(char **split);
+void			ft_splitdel(char **split);
+char			*ft_strcjoin(char const *s1, char const *s2, char c);
 
 #endif
