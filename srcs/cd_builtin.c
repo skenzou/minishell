@@ -6,14 +6,14 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/24 11:44:34 by midrissi          #+#    #+#             */
-/*   Updated: 2019/03/29 18:02:03 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/04/23 21:49:08 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include <errno.h>
 
-static char		*get_homepath(char **env)
+char		*get_homepath(char **env)
 {
 	int i;
 

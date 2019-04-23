@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 21:38:26 by midrissi          #+#    #+#             */
-/*   Updated: 2019/03/29 18:14:16 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/04/23 21:49:26 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void			print_env(char **env);
 **CD_BUILTIN.C
 */
 int				cd_builtin(int argc, char **argv, char ***env);
+char		  *get_homepath(char **env);
 
 /*
 **ERR_HANDLER.C
@@ -100,5 +101,10 @@ void			exec_bin(char **bin, char **env);
 **CMD_HANDLER.C
 */
 void			cmd_handler(char *cmd, char ***env);
+
+/*
+**EXPANSIONS.C
+*/
+void      manage_expansions(char **input, char **env);
 
 #endif

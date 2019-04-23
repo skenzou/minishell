@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 21:23:47 by midrissi          #+#    #+#             */
-/*   Updated: 2019/03/29 18:02:18 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/04/23 21:46:49 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,15 @@ void			cmd_handler(char *cmd, char ***env)
 {
 	char	**args;
 	int		id;
+	int		i;
 
 	if (!(args = ft_strsplit(cmd, ' ')))
 		exit(1);
 	if (ft_split_count(args) > 0)
 	{
+		i = -1;
+		while (args[++i])
+			manage_expansions(&args[i], *env);
 		id = get_builtin(args[0]);
 		if (id > 0)
 			exec_builtin(args, id, env);
