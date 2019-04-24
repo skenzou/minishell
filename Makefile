@@ -6,7 +6,7 @@
 #    By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/03 09:24:41 by midrissi          #+#    #+#              #
-#    Updated: 2019/04/23 21:47:18 by midrissi         ###   ########.fr        #
+#    Updated: 2019/04/24 16:08:41 by midrissi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,10 +40,11 @@ NAME = minishell
 cc = gcc
 C_FLAGS = -Wall -Wextra -Werror
 SRC_NAME = minishell.c cd_builtin.c err_handler.c echo_builtin.c cd_builtin.c \
-					signal_handlers.c exit_builtin.c setenv_builtin.c unsetenv_builtin.c \
-					cmd_handler.c bin_handler.c utils.c expansions.c
+		signal_handlers.c exit_builtin.c setenv_builtin.c unsetenv_builtin.c \
+		cmd_handler.c bin_handler.c utils.c expansions.c
 OBJ_PATH = ./obj/
 LFT_PATH = ./libft/
+LFT_NAME = libft.a
 INC_PATH = ./includes
 SRC_PATH = ./srcs/
 OBJ_NAME = $(SRC_NAME:.c=.o)
@@ -54,19 +55,17 @@ LONGEST			=	$(shell echo $(notdir $(SRC)) | tr " " "\n" | awk ' { if (\
 OBJ = $(addprefix $(OBJ_PATH),$(OBJ_NAME))
 INC = $(addprefix -I,$(INC_PATH))
 
-all: $(LIBFT_PATH)$(LIBFT_NAME) $(NAME)
+all: $(LFT_PATH)$(LFT_NAME) $(NAME)
 
-$(LIBFT_PATH)$(LIBFT_NAME):
-	@$(MAKE) -C $(LIBFT_PATH);
+$(LFT_PATH)$(LFT_NAME):
+	@$(MAKE) -C $(LFT_PATH);
 
-$(NAME): $(LIBFT_PATH)$(LIBFT_NAME) $(OBJ)
-		@echo
-		@make -C $(LFT_PATH)
+$(NAME): $(OBJ)
 		@$(CC) -o $(NAME) -L $(LFT_PATH) -lft $^ -o $@
 		@printf "$(_BOLD)$(_RED)./minishell is ready for use\n$(_END)"
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
-		@mkdir -p $(OBJ_PATH) 2> /dev/null || true
+		@mkdir -p $(OBJ_PATH)
 		@$(CC) $(C_FLAGS) $(INC) -o $@ -c $<
 		@printf "$(_BOLD)$(_BLUE)$(MSG)$(_END) $(_BOLD)$(_CYAN)%-$(LONGEST)s\
 		$(_END)" $(notdir $<)
