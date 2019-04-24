@@ -6,13 +6,13 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 18:46:30 by midrissi          #+#    #+#             */
-/*   Updated: 2019/03/29 18:05:03 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/04/24 17:07:45 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int				is_set(char *key, char **env)
+int						is_set(char *key, char **env)
 {
 	int i;
 	int len;
@@ -27,7 +27,7 @@ int				is_set(char *key, char **env)
 	return (-1);
 }
 
-static char		**addkey(char *key, char *value, char **env)
+static char				**addkey(char *key, char *value, char **env)
 {
 	int		i;
 	char	**fresh_env;
@@ -47,7 +47,7 @@ static char		**addkey(char *key, char *value, char **env)
 	return (fresh_env);
 }
 
-void			ft_setenv(char *key, char *value, char ***env)
+void					ft_setenv(char *key, char *value, char ***env)
 {
 	int		i;
 	char	*temp;
@@ -67,7 +67,7 @@ void			ft_setenv(char *key, char *value, char ***env)
 	value ? ft_strdel(&key) : 0;
 }
 
-int				setenv_builtin(int ac, char **av, char ***env)
+int						setenv_builtin(int ac, char **av, char ***env)
 {
 	if (ac > 3)
 		return (SETENV_USG);

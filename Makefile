@@ -6,7 +6,7 @@
 #    By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/03 09:24:41 by midrissi          #+#    #+#              #
-#    Updated: 2019/04/24 16:08:41 by midrissi         ###   ########.fr        #
+#    Updated: 2019/04/24 16:57:31 by midrissi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ MSG				=	Compiling minishell
 NAME = minishell
 cc = gcc
 C_FLAGS = -Wall -Wextra -Werror
-SRC_NAME = minishell.c cd_builtin.c err_handler.c echo_builtin.c cd_builtin.c \
+SRC_NAME = main.c cd_builtin.c err_handler.c echo_builtin.c cd_builtin.c \
 		signal_handlers.c exit_builtin.c setenv_builtin.c unsetenv_builtin.c \
 		cmd_handler.c bin_handler.c utils.c expansions.c
 OBJ_PATH = ./obj/

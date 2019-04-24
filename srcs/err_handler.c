@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/24 13:32:59 by midrissi          #+#    #+#             */
-/*   Updated: 2019/03/29 18:02:27 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/04/24 17:02:27 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 void	err_handler(int err_id, char *str)
 {
-	if (err_id == EXIT)
-		exit(0);
 	if (err_id == NON_EXISTENT)
 		ft_printf("-minishell: %s: No such file or directory\n", str);
 	if (err_id == IS_DIRECTORY)
