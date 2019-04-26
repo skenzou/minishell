@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/04 13:56:36 by midrissi          #+#    #+#             */
-/*   Updated: 2019/03/29 18:15:21 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/04/26 13:29:29 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,5 +145,7 @@ double			ft_percent(int start, int end, int curr);
 int				ft_split_count(char **split);
 void			ft_splitdel(char **split);
 char			*ft_strcjoin(char const *s1, char const *s2, char c);
+char			**ft_strsplitstr(char const *s, char *needle);
+int				ft_count_words_str(char const *s, char *needle);
 
 #endif
