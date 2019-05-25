@@ -17,8 +17,6 @@ $> ./minishell
 
 ### Mandatory
 
-- Can only use C
-- No memory leaks
 - Implement a series of builtins: `echo`, `cd`, `setenv`, `unsetenv`, `env`, `exit`
 - Manage the errors without using `errno`, by displaying a message adapted
 to the error output
