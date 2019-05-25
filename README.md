@@ -33,7 +33,6 @@ to the error output
     - wait, waitpid, wait3, wait4
     - signal, kill
     - exit
-- The binary file must be named `minishell`
 - Handle program interruption (Ctrl + D)
 
 ### Bonuses
