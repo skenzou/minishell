@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/08 09:15:55 by midrissi          #+#    #+#             */
-/*   Updated: 2019/04/26 13:35:30 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/25 11:05:17 by Mohamed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ int				main(int argc, char **argv, char **env)
 	{
 		print_prompt();
 		signal(SIGINT, sighandler);
+		input = NULL;
 		if ((ret = get_next_line(0, &input)) > 0)
 			input_handler(input, &env);
 	}
