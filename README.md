@@ -33,9 +33,7 @@ to the error output
     - wait, waitpid, wait3, wait4
     - signal, kill
     - exit
-- Must have a Makefile to build the program
 - The binary file must be named `minishell`
-- Can use [Libft
 - Handle program interruption (Ctrl + D)
 
 ### Bonuses
